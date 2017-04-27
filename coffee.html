@@ -55,6 +55,13 @@
     var hotChocolate = document.getElementById("hot-chocolate");
     myImage.setAttribute('src',"static/coffee_beans.jpg");
     var drinksOrdered =[];
+    
+    var prices = {
+        "brew": 2.05,
+        "espresso": 3.25,
+        "latte": 4.15,
+        "hot chocolate": 2.50
+    };
 
     function makeCoffee(drinkType){
         myImage.setAttribute('src',"static/coffee_machine.jpg");
@@ -69,7 +76,7 @@
         }, 4000);
         drinksOrdered.push(drinkType);
         console.log(drinksOrdered);
-        revenue()
+        myRevenueMessage.innerHTML = revenue(drinksOrdered, prices);
     }
 
     myImage.addEventListener('click', function () { return makeCoffee('brew'); });
@@ -78,12 +85,6 @@
     hotChocolate.addEventListener('click', function () { return makeCoffee('hot-chocolate'); });
     latte.addEventListener('click', function () { return makeCoffee('latte'); });
 
-    var prices = {
-        "brew": 2.05,
-        "espresso": 3.25,
-        "latte": 4.15,
-        "hot chocolate": 2.50
-    };
     var totalRevenue=0;
 
     function revenue(drinksOrdered, prices) {
